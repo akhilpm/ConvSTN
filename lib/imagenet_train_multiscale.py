@@ -25,7 +25,7 @@ import warnings
 from utils import data_utils
 from utils import vis_utils_imagenet
 #from model.model_CUB_multiscale import Net
-from model.model_CUB_multiscale import Net
+from model.model_multiscale import Net
 #from model.config import get_output_dir
 from datasets.image_net import image_net
 from datasets import imagenet_eval

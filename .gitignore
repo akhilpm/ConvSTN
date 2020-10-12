@@ -1,0 +1,27 @@
+# Data folder with resources
+/data/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+sdist/
+*.egg-info/
+*.pth
+*.o
+*.pyc
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VSCode
+.VSCode/
+
+# Pickle
+*.pkl
+
+*.idea/
+*.log

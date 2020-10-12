@@ -276,34 +276,14 @@ def filter_test_for_scale(imdb):
     return imdb, indicator
 
 
-def get_area_hist(imdb, image_res):
-    cache_file = osp.join(imdb._devkit_path, 'cache', imdb.name + '_' + imdb._image_set + '_' + str(image_res) + '_gt_roidb.pkl')
-    with open(cache_file, "rb") as f:
-        gt_roidb = pickle.load(f)
-    indicator = np.zeros(len(gt_roidb), dtype=np.int32)
-    for i in range(len(gt_roidb)):
-        area = (gt_roidb[i]['boxes'][0, 2] - gt_roidb[i]['boxes'][0, 0]) * (gt_roidb[i]['boxes'][0, 3] - gt_roidb[i]['boxes'][0, 1])
-        if 11.0 <= area < 10218.8:
-            indicator[i] = 1
-        elif 10218.8 <= area < 20425.6:
-            indicator[i] = 2
-        elif 20425.6 <= area < 30632.4:
-            indicator[i] = 3
-        elif 30632.4 <= area < 40839.2:
-            indicator[i] = 4
-        elif 40839.2 <= area < 51046.0:
-            indicator[i] = 5
-        elif 51046.0 <= area < 61252.8:
-            indicator[i] = 6
-        elif 61252.8 <= area < 71459.6:
-            indicator[i] = 7
-        elif 71459.6 <= area < 81666.4:
-            indicator[i] = 8
-        elif 81666.4 <= area < 91873.2:
-            indicator[i] = 9
-        elif 91873.2 <= area < 102080.0:
-            indicator[i] = 10
+def get_area_hist(imdb):
+    """ divide area into 3 bins based on size of the bounding box as S/M/L category with
+    [S=205699, M=146168, L=172099] on train set and [S=17197, M=13912, L=18891] on test set"""
+    areas = [roidb['area_original'] for roidb in imdb.gt_roidb]
+    bins = np.array([10, 50000, 100000, 18000000])
+    indicator = np.digitize(areas, bins)
     return indicator
+
 
 def sample_few_images(imdb):
     max_count = 100

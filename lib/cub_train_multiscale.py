@@ -25,7 +25,7 @@ from copy import deepcopy
 from utils import data_utils
 from utils import vis_utils_cub
 from datasets.factory import get_imdb
-from model.model_CUB_multiscale import Net
+from model.model_multiscale import Net
 #from model.model_CUB_5fmap_test import Nett
 from model.config import get_output_dir
 from utils import box_utils_cub

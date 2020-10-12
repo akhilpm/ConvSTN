@@ -1,4 +1,0 @@
-2019-04-26 21:15:41,341 - INFO - Model initialization completed
-2019-04-26 21:15:47,005 - INFO - Train size: 5994
-2019-04-26 21:15:47,006 - INFO - Test size: 5794
-2019-04-26 21:15:47,006 - INFO - Test size after picking the selected scale: 763
